@@ -1,3 +1,5 @@
+# This is a Windows installation tutorial fork. The main code will not be updated and all credits belong to the original authors.
+
 
 ## :book: Depth-Aware Generative Adversarial Network for Talking Head Video Generation (CVPR 2022)
 <p align="center">
@@ -33,10 +35,9 @@ https://user-images.githubusercontent.com/19970321/162151327-f2930231-42e3-40f2-
 
 ## :wrench: Dependencies and Installation
 
-- Python >= 3.7 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
-- [PyTorch >= 1.7](https://pytorch.org/)
-- Option: NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
-- Option: Linux
+- Use [Anaconda](https://www.anaconda.com/products/distribution)
+- NVIDIA GPU + [CUDA](https://developer.nvidia.com/cuda-downloads)
+
 
 ### Installation
 We now provide a *clean* version of DaGAN, which does not require customized CUDA extensions. <br>
@@ -51,13 +52,12 @@ We now provide a *clean* version of DaGAN, which does not require customized CUD
 2. Install dependent packages
 
     ```bash
+    conda create -n DaGAN python=3.7 && conda activate DaGAN
+    conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
     pip install -r requirements.txt
+    cd face-alignment && python setup.py install && cd ..
+    ```    
 
-    ## Install the Face Alignment lib
-    cd face-alignment
-    pip install -r requirements.txt
-    python setup.py install
-    ```
 ## :zap: Quick Inference
 
 We take the paper version for an example. More models can be found [here](https://hkustconnect-my.sharepoint.com/:f:/g/personal/fhongac_connect_ust_hk/EjfeXuzwo3JMn7s0oOPN_q0B81P5Wgu_kbYJAh7uSAKS2w?e=KaQcPk).
@@ -71,12 +71,19 @@ The pre-trained checkpoint of face depth network and our DaGAN checkpoints can b
 **Inference!**
 To run a demo, download checkpoint and run the following command:
 
+For the normal checkpoint
 ```bash
-CUDA_VISIBLE_DEVICES=0 python demo.py  --config config/vox-adv-256.yaml --driving_video path/to/driving --source_image path/to/source --checkpoint path/to/checkpoint --relative --adapt_scale --kp_num 15 --generator DepthAwareGenerator 
+python demo.py  --config config/vox-adv-256.yaml --driving_video driving/dame.mp4 --source_image input/trump.png --checkpoint checkpoints/DaGAN_vox_adv_256.pth.tar --relative --adapt_scale --kp_num 15 --generator DepthAwareGenerator
 ```
+
+For the SPADE checkpoint
+```bash
+python demo.py  --config config/vox-adv-256.yaml --driving_video driving/<video_file> --source_image input/<image_file> --checkpoint checkpoints/SPADE_DaGAN_vox_adv_256.pth.tar --relative --adapt_scale --kp_num 15 --generator SPADEDepthAwareGenerator
+```
+
 The result will be stored in ```result.mp4```. The driving videos and source images should be cropped before it can be used in our method. To obtain some semi-automatic crop suggestions you can use ```python crop-video.py --inp some_youtube_video.mp4```. It will generate commands for crops using ffmpeg. 
 
-
+### This fork edits end here
 
 
 ## :computer: Training
