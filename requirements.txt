@@ -36,3 +36,4 @@ pathlib
 daal==2021.2.3
 numba
 opencv-python
+imageio-ffmpeg
