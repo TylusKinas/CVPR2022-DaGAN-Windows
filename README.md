@@ -74,7 +74,7 @@ To run a demo, download checkpoint and run the following command: (add a `--cpu`
 
 For the normal checkpoint
 ```bash
-python demo.py  --config config/vox-adv-256.yaml --driving_video driving/dame.mp4 --source_image input/trump.png --checkpoint checkpoints/DaGAN_vox_adv_256.pth.tar --relative --adapt_scale --kp_num 15 --generator DepthAwareGenerator
+python demo.py  --config config/vox-adv-256.yaml --driving_video driving/<video_file> --source_image input/<image_file> --checkpoint checkpoints/DaGAN_vox_adv_256.pth.tar --relative --adapt_scale --kp_num 15 --generator DepthAwareGenerator
 ```
 
 For the SPADE checkpoint
