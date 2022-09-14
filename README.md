@@ -54,6 +54,7 @@ We now provide a *clean* version of DaGAN, which does not require customized CUD
     ```bash
     conda create -n DaGAN python=3.7 && conda activate DaGAN
     conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+    conda install pytorch torchvision torchaudio cpuonly -c pytorch  # for CPU only
     pip install -r requirements.txt
     cd face-alignment && python setup.py install && cd ..
     ```    
@@ -69,7 +70,7 @@ See ```config/vox-adv-256.yaml``` to get description of each parameter.
 The pre-trained checkpoint of face depth network and our DaGAN checkpoints can be found under following link: [OneDrive](https://hkustconnect-my.sharepoint.com/:f:/g/personal/fhongac_connect_ust_hk/EjfeXuzwo3JMn7s0oOPN_q0B81P5Wgu_kbYJAh7uSAKS2w?e=KaQcPk).
 
 **Inference!**
-To run a demo, download checkpoint and run the following command:
+To run a demo, download checkpoint and run the following command: (add a `--cpu` flag if you are not running on CUDA/NVIDIA GPU)
 
 For the normal checkpoint
 ```bash
