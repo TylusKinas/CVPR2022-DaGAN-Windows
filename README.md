@@ -45,7 +45,7 @@ We now provide a *clean* version of DaGAN, which does not require customized CUD
 1. Clone repo
 
     ```bash
-    git clone https://github.com/harlanhong/CVPR2022-DaGAN.git
+    git clone [https://github.com/harlanhong/CVPR2022-DaGAN.git](https://github.com/bycloudai/CVPR2022-DaGAN-Windows.git)
     cd CVPR2022-DaGAN
     ```
 
